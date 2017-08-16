@@ -44,7 +44,5 @@ Vagrant.configure("2") do |config|
             cp /vagrant/.vimrc ~/            
         EOF
         controller.vm.provision "shell", privileged: true, path: "install_ansible.sh"
-        controller.vm.provision "shell", privileged: true, path: "install_mono.sh"
-        controller.vm.provision "shell", privileged: true, path: "install_pkg_utils.sh"
     end
 end
