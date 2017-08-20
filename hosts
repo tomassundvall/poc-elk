@@ -1,0 +1,5 @@
+[elk]
+elk-srv ansible_host=172.20.20.10 ansible_user=vagrant ansible_password=vagrant
+
+[app]
+app-srv ansible_host=172.20.20.11 ansible_user=vagrant ansible_password=vagrant

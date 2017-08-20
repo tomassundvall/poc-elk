@@ -1,0 +1,25 @@
+---
+# file: elasticsearch/tasks/main.yml
+#
+# elasticsearch role task file
+#
+
+- name: add Elasticsearch repository key
+  apt_key: url="https://artifacts.elastic.co/GPG-KEY-elasticsearch" state=present
+
+- name: Add Elasticsearch repository
+  apt_repository: repo="deb https://artifacts.elastic.co/packages/5.x/apt stable main" state=present
+
+- name: Ensure Elasticsearch is installed
+  apt: name=elasticsearch state=present
+
+- replace:
+    path: /etc/elasticsearch/jvm.options
+    regexp: (2g)
+    replace: 1g
+
+- name: Ensure Elasticsearch is running
+  systemd:
+    state: started
+    enabled: yes
+    name: elasticsearch.service

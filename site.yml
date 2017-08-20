@@ -1,0 +1,8 @@
+---
+
+- name: Add roles for elk server
+  hosts: elk-srv
+  become: true
+  roles:
+    - java
+    - elasticsearch
